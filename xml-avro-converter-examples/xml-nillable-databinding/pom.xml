@@ -1,0 +1,64 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>edu.mit.ll.xml-avro-converter</groupId>
+    <artifactId>xml-avro-converter-examples</artifactId>
+    <version>1.0.0</version>
+  </parent>
+
+  <groupId>edu.mit.ll.xml-avro-converter</groupId>
+  <artifactId>xml-avro-converter-nillable-example</artifactId>
+  <packaging>jar</packaging>
+  <name>XML Nillable Databinding Example</name>
+
+  <dependencies>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>xml-avro-converter-core</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.sun.xml.bind</groupId>
+      <artifactId>jaxb-core</artifactId>
+      <version>2.2.11</version>
+    </dependency>
+    <dependency>
+      <groupId>com.sun.xml.bind</groupId>
+      <artifactId>jaxb-impl</artifactId>
+      <version>2.2.11</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.jvnet.jaxb2.maven2</groupId>
+        <artifactId>maven-jaxb2-plugin</artifactId>
+        <version>0.13.1</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <schemaDirectory>src/main/resources</schemaDirectory>
+          <schemaIncludes>
+            <include>cities.xsd</include>
+          </schemaIncludes>
+          <strict>true</strict>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.5.0</version>
+        <configuration>
+          <mainClass>edu.mit.ll.xml_avro_converter.examples.xml.XmlConversionExample</mainClass>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

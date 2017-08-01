@@ -1,0 +1,35 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>edu.mit.ll.xml-avro-converter</groupId>
+    <artifactId>xml-avro-converter-examples</artifactId>
+    <version>1.0.0</version>
+  </parent>
+
+  <groupId>edu.mit.ll.xml-avro-converter</groupId>
+  <artifactId>xml-avro-converter-polymorphism-example</artifactId>
+  <packaging>jar</packaging>
+  <name>Polymorphism Example</name>
+
+  <dependencies>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>xml-avro-converter-core</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.5.0</version>
+        <configuration>
+          <mainClass>edu.mit.ll.xml_avro_converter.examples.polymorphism.PolymorphismExample</mainClass>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

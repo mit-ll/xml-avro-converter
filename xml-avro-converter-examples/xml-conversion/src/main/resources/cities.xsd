@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns="urn:edu:mit:ll:xml_avro_converter:examples:cities"
+    elementFormDefault="qualified"
+    targetNamespace="urn:edu:mit:ll:xml_avro_converter:examples:cities">
+  <xs:simpleType name="nameType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:simpleType name="countryType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:simpleType name="directionType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="E"/>
+      <xs:enumeration value="N"/>
+      <xs:enumeration value="S"/>
+      <xs:enumeration value="W"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="positionType">
+    <xs:sequence>
+      <xs:element name="degrees" type="xs:int"/>
+      <xs:element name="minutes" type="xs:int"/>
+      <xs:element name="direction" type="directionType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="city">
+    <xs:sequence>
+      <xs:element name="name" type="nameType"/>
+      <xs:element name="country" type="countryType"/>
+      <xs:element name="latitude" type="positionType"/>
+      <xs:element name="longitude" type="positionType"/>
+      <xs:element name="population" type="xs:long" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="cityCollection">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="city" type="city" minOccurs="0"
+            maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
